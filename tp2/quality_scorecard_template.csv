@@ -1,0 +1,8 @@
+dimension,rule_in_plain_words,column,how_you_measured_it,failing_rows,total_rows,score_pct,severity_high_medium_low,who_should_fix_owner_steward_custodian
+Completeness,email is filled,email,"df[""email""].isna().sum() or df[""email""].str.strip().eq("""").sum()",168,1241,86.46,high,owner
+Uniqueness,email is unique after strip and lower,email,"df[""email""].duplicated(keep=False).sum() before drop_duplicates",168,1241,86.46,high,steward
+Validity,email matches regex,email,"~df[""email""].str.match(r'^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$')",20,1134,98.24,high,steward
+Consistency,signup_date is in YYYY-MM-DD,signup_date,"~df[""signup_date""].str.match(r'^\d{4}-\d{2}-\d{2}$')",284,1134,74.96,medium,custodian
+Validity,loyalty_tier in bronze silver gold platinum,loyalty_tier,"~df[""loyalty_tier""].astype(str).str.strip().str.lower().isin(allowed)",4,1134,99.65,low,steward
+Accuracy,birth_date is plausible not future and not before 1906,birth_date,"pd.to_datetime(errors=coerce) then isna or > today or < 1906-01-01",167,1134,85.27,medium,owner
+Validity,French postal code has 5 digits,postal_code,"~df[""postal_code""].astype(str).str.strip().str.match(r'^\d{5}$')",44,1134,96.12,medium,custodian

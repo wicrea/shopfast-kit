@@ -4,6 +4,6 @@ data
 cm2
 init 
 check_setup.py
-docker_compose.yml
+docker-compose.yml
 README.md
-requirementd.txt
+requirements.txt

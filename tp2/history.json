@@ -1,0 +1,519 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "first_name",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne first_name à laide de lexpression value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "first_name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne first_name à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "first_name",
+    "expression": "value.replace(/[\\p{Zs}\\s]+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne first_name à laide de lexpression value.replace(/[\\p{Zs}\\s]+/,' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "last_name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne last_name à laide de lexpression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "last_name",
+    "expression": "value.replace(/[\\p{Zs}\\s]+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne last_name à laide de lexpression value.replace(/[\\p{Zs}\\s]+/,' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "last_name",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne last_name à laide de lexpression value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "email",
+    "expression": "grel:value.trim().toLowercase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne email à laide de lexpression grel:value.trim().toLowercase()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "FR",
+          "fr"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "FR"
+      },
+      {
+        "from": [
+          "ES",
+          "es"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ES"
+      },
+      {
+        "from": [
+          "France",
+          "france "
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "FR"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "DE",
+          "DEU"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "DE"
+      },
+      {
+        "from": [
+          "FR",
+          "FRA"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "FR"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Allemagne"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "DE"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Germany"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "DE"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Spain"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ES"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Belgique"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BE"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Belgium"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BE"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Espagne"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ES"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "BEL"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BE"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne country"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "birth_date",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne birth_date à laide de lexpression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "birth_date",
+    "expression": "jython:return value.strftime(\"%Y-%m-%d\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne birth_date à laide de lexpression jython:return value.strftime(\"%Y-%m-%d\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "birth_date",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "1899-01-01T00:00:00Z"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "1899-01-01"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne birth_date"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "birth_date",
+          "expression": "value",
+          "columnName": "birth_date",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "1899-01-01",
+                "l": "1899-01-01"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "signup_date",
+    "expression": "jython:return value.strftime(\"%Y-%m-%d\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne signup_date à laide de lexpression jython:return value.strftime(\"%Y-%m-%d\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "signup_date",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne signup_date à laide de lexpression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "signup_date",
+    "expression": "jython:return value.strftime(\"%Y-%m-%d\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne signup_date à laide de lexpression jython:return value.strftime(\"%Y-%m-%d\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loyalty_tier",
+    "expression": "value.toLowercase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne loyalty_tier à laide de lexpression value.toLowercase()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loyalty_tier",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "platinum"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "platinium"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne loyalty_tier"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loyalty_tier",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "silver "
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "silver "
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne loyalty_tier"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loyalty_tier",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "silver "
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "silver"
+      }
+    ],
+    "description": "Modification en masse des cellules de la colonne loyalty_tier"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "postal_code",
+    "expression": "jython:return value.zfill(5)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne postal_code à laide de lexpression jython:return value.zfill(5)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "phone",
+    "expression": "grel:value.trim()\n  .replace(/\\D/, \"\")\n  .replace(/^0033/, \"33\")\n  .replace(/^33(\\d{9})$/, \"33$1\")\n  .replace(/^0(\\d{9})$/, \"33$1\")\n  .replace(/^\\33(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})$/, \"33$1$2$3$4$5\")\n   .replace(/^/, \"+\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transformer le texte sur les cellules de la colonne phone à laide de lexpression grel:value.trim()\n  .replace(/\\D/, \"\")\n  .replace(/^0033/, \"33\")\n  .replace(/^33(\\d{9})$/, \"33$1\")\n  .replace(/^0(\\d{9})$/, \"33$1\")\n  .replace(/^\\33(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})$/, \"33$1$2$3$4$5\")\n   .replace(/^/, \"+\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "email",
+    "expression": "grel:facetCount(value, 'value', 'email') > 1",
+    "onError": "set-to-blank",
+    "newColumnName": "is_duplicate_email",
+    "columnInsertIndex": 4,
+    "description": "Créer la colonne is_duplicate_email à l’index 4 sur la base de la colonne email à l’aide de l’expression grel:facetCount(value, 'value', 'email') > 1"
+  }
+]
