@@ -6,3 +6,17 @@ Consistency,signup_date is in YYYY-MM-DD,signup_date,"~df[""signup_date""].str.m
 Validity,loyalty_tier in bronze silver gold platinum,loyalty_tier,"~df[""loyalty_tier""].astype(str).str.strip().str.lower().isin(allowed)",4,1134,99.65,low,steward
 Accuracy,birth_date is plausible not future and not before 1906,birth_date,"pd.to_datetime(errors=coerce) then isna or > today or < 1906-01-01",167,1134,85.27,medium,owner
 Validity,French postal code has 5 digits,postal_code,"~df[""postal_code""].astype(str).str.strip().str.match(r'^\d{5}$')",44,1134,96.12,medium,custodian
+
+
+dimension,rule_in_plain_words,column,how_you_measured_it,failing_rows,total_rows,score_pct,severity_high_medium_low,who_should_fix_owner_steward_custodian
+Completeness,order_id is filled,order_id,"df[""order_id""].isna().sum()",0,5207,100.0,high,owner
+Uniqueness,order_id is unique,order_id,"df[""order_id""].duplicated(keep=False).sum()",14,5207,98.87,high,steward
+Completeness,customer_id is filled,customer_id,"df[""customer_id""].isna().sum()",0,5207,100.0,high,owner
+Integrity,customer_id exists in customers,customer_id,"~df[""customer_id""].isin(set(customers[""customer_id""]))",14,5207,98.87,high,steward
+Completeness,order_date is filled,order_date,"df[""order_date""].isna().sum()",0,5207,100.0,high,owner
+Consistency,order_date is in YYYY-MM-DD,order_date,"~df[""order_date""].str.match(r'^\d{4}-\d{2}-\d{2}$')",0,5207,100.0,medium,custodian
+Accuracy,order_date is not in the future,order_date_dt,"df[""order_date_dt""] > pd.Timestamp.today()",5,5207,99.6,medium,custodian
+Validity,status in pending shipped delivered cancelled returned,status,"~df[""status""].isin([""pending"",""shipped"",""delivered"",""cancelled"",""returned""])",9,5207,99.27,medium,steward
+Validity,channel in web mobile_app marketplace,channel,"~df[""channel""].isin([""web"",""mobile_app"",""marketplace""])",0,5207,100.0,low,steward
+Validity,shipping_country in FR DE ES BE,shipping_country,"~df[""shipping_country""].isin([""FR"",""DE"",""ES"",""BE""])",0,5207,100.0,low,steward
+Accuracy,total_amount_eur is strictly positive and below 10000,total_amount_eur,"(df[""total_amount_eur""] <= 0) | (df[""total_amount_eur""] > 10000)",6,5207,99.52,medium,owner

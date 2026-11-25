@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data documentation compiled by Great Expectations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <title></title>
+
+    
+    
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-table@1.19.0/dist/extensions/filter-control/bootstrap-table-filter-control.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.1.0/dist/css/bootstrap-prefers-dark.css" />
+
+    <style>
+  
+
+body {
+  position: relative;
+}
+
+.container {
+  padding-top: 50px;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 90px;
+  z-index: 1;
+}
+
+.ge-section {
+  clear: both;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.popover {
+  max-width: 100%;
+}
+
+.cooltip {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cooltip .top {
+  min-width: 200px;
+  top: -6px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  padding: 10px 20px;
+  color: #FFFFFF;
+  background-color: #222222;
+  font-weight: normal;
+  font-size: 13px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 99999999 !important;
+  box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.cooltip:hover .top {
+  display: block;
+  z-index: 99999999 !important;
+}
+
+.cooltip .top i {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -12px;
+  width: 24px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.cooltip .top i::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background-color: #222222;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+ul {
+  padding-inline-start: 20px;
+}
+
+.show-scrollbars {
+  overflow: auto;
+}
+
+td .show-scrollbars {
+  max-height: 80vh;
+}
+
+/*.show-scrollbars ul {*/
+/*  padding-bottom: 20px*/
+/*}*/
+
+.show-scrollbars::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.show-scrollbars::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+.show-scrollbars::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+
+.show-scrollbars::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, .5);
+}
+
+#ge-cta-footer {
+  opacity: 0.9;
+  border-left-width: 4px
+}
+
+.carousel-caption {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+footer {
+  position: fixed;
+  border-top: 1px solid #98989861;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  padding: 4px;
+  font-size: 14px;
+  text-align: right;
+  width: 100%;
+  background: white;
+  z-index: 100000;
+}
+footer a {
+  padding-right: 8px;
+  color: #ff6210;
+  font-weight: 600;
+}
+
+footer a:hover {
+    color: #bc490d;
+    text-decoration: underline;
+}
+
+/* some css overrides for dark mode*/
+@media (prefers-color-scheme: dark) {
+  .table {
+    color: #f1f1f1 !important;
+    background-color: #212529;
+  }
+  .table-bordered{
+    border: #f1f1f1;
+  }
+  .table-hover tbody tr:hover {
+    color: #f1f1f1;
+    background-color: rgba(255,255,255,.075);
+  }
+  .form-control:disabled,
+  .form-control[readonly]{
+    background-color: #343a40;
+    opacity: .8;
+  }
+
+  .bg-light {
+    background: inherit !important;
+  }
+
+  .code-snippet {
+    background: #CDCDCD !important;
+  }
+
+  .alert-secondary a {
+    color: #0062cc;
+  }
+
+  .alert-secondary a:focus, .alert-secondary a:hover{
+    color: #004fa5;
+  }
+
+  .navbar-brand a {
+    background: url('https://great-expectations-web-assets.s3.us-east-2.amazonaws.com/full_logo_dark.png') 0 0 no-repeat;
+    background-size: 228.75px 50px;
+    display: inline-block
+  }
+  .navbar-brand a img {
+    visibility:hidden
+  }
+  footer {
+    border-top: 1px solid #ffffff61;
+    background: black;
+    z-index: 100000;
+  }
+  footer a {
+    color: #ff6210;
+  }
+
+  footer a:hover {
+    color: #ff6210;
+  }
+}</style>
+    <style>/*index page*/
+.ge-index-page-site-name-title {}
+.ge-index-page-table-container {}
+.ge-index-page-table {}
+.ge-index-page-table-profiling-links-header {}
+.ge-index-page-table-expectations-links-header {}
+.ge-index-page-table-validations-links-header {}
+.ge-index-page-table-profiling-links-list {}
+.ge-index-page-table-profiling-links-item {}
+.ge-index-page-table-expectation-suite-link {}
+.ge-index-page-table-validation-links-list {}
+.ge-index-page-table-validation-links-item {}
+
+/*breadcrumbs*/
+.ge-breadcrumbs {}
+.ge-breadcrumbs-item {}
+
+/*navigation sidebar*/
+.ge-navigation-sidebar-container {}
+.ge-navigation-sidebar-content {}
+.ge-navigation-sidebar-title {}
+.ge-navigation-sidebar-link {}</style>
+
+    
+  
+
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    
+  
+
+
+  
+
+<link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon"/>
+  </head>
+
+  <body>
+
+    
+  
+
+
+  
+
+<nav class="navbar navbar-expand-md sticky-top border-bottom" style="height: 70px">
+  <div class="mr-auto">
+    <nav class="d-flex align-items-center">
+      <div class="float-left navbar-brand m-0 h-100">
+        <a href="../index.html">
+          <img
+            class="NO-CACHE"
+            src="https://great-expectations-web-assets.s3.us-east-2.amazonaws.com/logo-long.png?d=20261125T101227.929575Z&dataContextId=db8fde44-ed06-4c1e-9344-086e148ead05"
+            alt="Great Expectations"
+            style="width: auto; height: 50px"
+          />
+        </a>
+      </div>
+      
+        <ol class="ge-breadcrumbs breadcrumb d-md-inline-flex bg-light ml-2 mr-0 mt-0 mb-0 pt-0 pb-0 d-none">
+            <li class="ge-breadcrumbs-item breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="ge-breadcrumbs-item breadcrumb-item active" aria-current="page">Expectations / orders_suite</li>
+        </ol>
+      
+    </nav>
+  </div>
+</nav>
+    
+
+    <div class="container-fluid pt-4 pb-4 pl-5 pr-5">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12 d-sm-block px-0">
+  <div class="mb-4">
+  
+    <div class="col-12 p-0">
+      <h4>Expectation Suite</h4>
+      <p class="lead">A collection of Expectations defined for batches of data.</p>
+    </div>
+  
+</div>
+  <div class="sticky">
+    
+    
+      <div class="card d-md-block d-none" style="max-height: 75vh">
+  <div class="card-header p-2">
+    <strong>Table of Contents</strong>
+  </div>
+  <div class="card-body p-0" style="overflow: auto; height: 100%">
+    <nav id="navigation" class="rounded navbar   bg-light ge-navigation-sidebar-container p-1" style="max-height: 65vh;">
+      <ul class="nav nav-pills ge-navigation-sidebar-content col-12 p-0" style="max-height: 65vh">
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link" href="#section-1"
+               style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                <strong>Overview</strong>
+              </a>
+            </li>
+          
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-2"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                channel
+              </a>
+            </li>
+          
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-3"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                customer_id
+              </a>
+            </li>
+          
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-4"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                order_date
+              </a>
+            </li>
+          
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-5"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                order_date_dt
+              </a>
+            </li>
+          
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-6"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                order_id
+              </a>
+            </li>
+          
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-7"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                shipping_country
+              </a>
+            </li>
+          
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-8"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                status
+              </a>
+            </li>
+          
+        
+          
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-9"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                total_amount_eur
+              </a>
+            </li>
+          
+        
+      </ul>
+    </nav>
+  </div>
+</div>
+    
+  </div>
+</div>
+        <div class="col-md-10 col-lg-10 col-xs-12 pl-md-4 pr-md-3">
+        
+          <div id="section-1" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-1-content-block-1" class="col-12" >
+
+    <div id="section-1-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    Overview
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-1-content-block-2" class="col-12 table-responsive mt-1" >
+
+    <div id="section-1-content-block-2-header" >
+        
+          
+            <div>
+              
+                <h6 class="m-0" >
+                    Info
+                </h6>
+            
+            </div>
+          
+        </div>
+
+
+
+
+<table
+  id="section-1-content-block-2-body"
+  class="table table-sm" style="margin-bottom:0.5rem !important; margin-top:0.5rem !important;" 
+  data-toggle="table"
+  
+>
+    
+    
+    
+      
+      
+      
+    
+      <thead hidden>
+        <tr>
+            
+                
+                <th
+                  
+                >
+                  
+                </th>
+            
+                
+                <th
+                  
+                >
+                  
+                </th>
+            
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-1-content-block-2-cell-1-1" ><div class="show-scrollbars">Expectation Suite Name</div></td><td id="section-1-content-block-2-cell-1-2" ><div class="show-scrollbars">orders_suite</div></td></tr><tr>
+          <td id="section-1-content-block-2-cell-2-1" ><div class="show-scrollbars">Great Expectations Version</div></td><td id="section-1-content-block-2-cell-2-2" ><div class="show-scrollbars">1.25.0</div></td></tr></tbody>
+</table>
+
+</div>
+        
+
+<div id="section-1-content-block-3" class="col-12" >
+
+    <div id="section-1-content-block-3-header" >
+        
+          
+            <div>
+              
+                <h6 class="m-0" >
+                    Table-Level Expectations
+                </h6>
+            
+            </div>
+          
+        </div>
+
+
+<ul id="section-1-content-block-3-body" >
+    
+            
+        
+        <li >
+                <span >
+                    Must have greater than or equal to <span class="badge badge-secondary" >1000</span> and less than or equal to <span class="badge badge-secondary" >100000</span> rows.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+
+<div id="section-1-content-block-4" class="col-12 table-responsive mt-1" >
+
+    
+
+<div id="section-1-content-block-4-body" class="table table-sm" >
+  <div id="section-1-content-block-4-header" >
+        
+          
+            <div>
+              
+                <h6 class="m-0" >
+                    Notes
+                </h6>
+            
+            </div>
+          
+        </div>
+
+  
+        <p >This Expectation suite currently contains 11 total Expectations across 8 columns.</p>
+      
+    </div>
+
+</div>
+        
+    </div>
+</div>
+        
+          <div id="section-2" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-2-content-block-1" class="col-12" >
+
+    <div id="section-2-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    channel
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-2-content-block-2" class="col-12" >
+
+    
+
+<ul id="section-2-content-block-2-body" >
+    
+            
+        
+        <li >
+                <span >
+                    values must belong to this set: <span class="badge badge-secondary" >web</span> <span class="badge badge-secondary" >mobile_app</span> <span class="badge badge-secondary" >marketplace</span>.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+    </div>
+</div>
+        
+          <div id="section-3" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-3-content-block-1" class="col-12" >
+
+    <div id="section-3-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    customer_id
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-3-content-block-2" class="col-12" >
+
+    
+
+<ul id="section-3-content-block-2-body" >
+    
+            
+        
+        <li >
+                <span >
+                    values must never be null.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+            
+        
+        <li >
+                <span >
+                    values must belong to this set: <span class="badge badge-secondary" >10401</span> <span class="badge badge-secondary" >10998</span> <span class="badge badge-secondary" >10990</span> <span class="badge badge-secondary" >10626</span> <span class="badge badge-secondary" >10509</span> <span class="badge badge-secondary" >10614</span> <span class="badge badge-secondary" >10495</span> <span class="badge badge-secondary" >10861</span> <span class="badge badge-secondary" >10584</span> <span class="badge badge-secondary" >10987</span> <span class="badge badge-secondary" >10269</span> <span class="badge badge-secondary" >11060</span> <span class="badge badge-secondary" >10362</span> <span class="badge badge-secondary" >10989</span> <span class="badge badge-secondary" >10284</span> <span class="badge badge-secondary" >10733</span> <span class="badge badge-secondary" >10841</span> <span class="badge badge-secondary" >10948</span> <span class="badge badge-secondary" >10917</span> <span class="badge badge-secondary" >10842</span> <span class="badge badge-secondary" >10166</span> <span class="badge badge-secondary" >10786</span> <span class="badge badge-secondary" >10752</span> <span class="badge badge-secondary" >10682</span> <span class="badge badge-secondary" >10974</span> <span class="badge badge-secondary" >10216</span> <span class="badge badge-secondary" >10788</span> <span class="badge badge-secondary" >10260</span> <span class="badge badge-secondary" >10620</span> <span class="badge badge-secondary" >10123</span> <span class="badge badge-secondary" >10085</span> <span class="badge badge-secondary" >11047</span> <span class="badge badge-secondary" >10790</span> <span class="badge badge-secondary" >10356</span> <span class="badge badge-secondary" >10129</span> <span class="badge badge-secondary" >11051</span> <span class="badge badge-secondary" >11013</span> <span class="badge badge-secondary" >10413</span> <span class="badge badge-secondary" >10093</span> <span class="badge badge-secondary" >10655</span> <span class="badge badge-secondary" >10010</span> <span class="badge badge-secondary" >10359</span> <span class="badge badge-secondary" >10024</span> <span class="badge badge-secondary" >10666</span> <span class="badge badge-secondary" >10023</span> <span class="badge badge-secondary" >10142</span> <span class="badge badge-secondary" >10958</span> <span class="badge badge-secondary" >10773</span> <span class="badge badge-secondary" >11101</span> <span class="badge badge-secondary" >10896</span> <span class="badge badge-secondary" >10651</span> <span class="badge badge-secondary" >11209</span> <span class="badge badge-secondary" >10242</span> <span class="badge badge-secondary" >10230</span> <span class="badge badge-secondary" >11025</span> <span class="badge badge-secondary" >10988</span> <span class="badge badge-secondary" >10513</span> <span class="badge badge-secondary" >10122</span> <span class="badge badge-secondary" >10893</span> <span class="badge badge-secondary" >10534</span> <span class="badge badge-secondary" >11038</span> <span class="badge badge-secondary" >10179</span> <span class="badge badge-secondary" >10574</span> <span class="badge badge-secondary" >11046</span> <span class="badge badge-secondary" >10979</span> <span class="badge badge-secondary" >10622</span> <span class="badge badge-secondary" >10774</span> <span class="badge badge-secondary" >10873</span> <span class="badge badge-secondary" >10088</span> <span class="badge badge-secondary" >10146</span> <span class="badge badge-secondary" >10663</span> <span class="badge badge-secondary" >11145</span> <span class="badge badge-secondary" >11158</span> <span class="badge badge-secondary" >11141</span> <span class="badge badge-secondary" >10616</span> <span class="badge badge-secondary" >10390</span> <span class="badge badge-secondary" >10451</span> <span class="badge badge-secondary" >10443</span> <span class="badge badge-secondary" >10630</span> <span class="badge badge-secondary" >10814</span> <span class="badge badge-secondary" >10830</span> <span class="badge badge-secondary" >10479</span> <span class="badge badge-secondary" >10395</span> <span class="badge badge-secondary" >11166</span> <span class="badge badge-secondary" >10938</span> <span class="badge badge-secondary" >11076</span> <span class="badge badge-secondary" >10719</span> <span class="badge badge-secondary" >10518</span> <span class="badge badge-secondary" >10183</span> <span class="badge badge-secondary" >10575</span> <span class="badge badge-secondary" >11014</span> <span class="badge badge-secondary" >10582</span> <span class="badge badge-secondary" >10389</span> <span class="badge badge-secondary" >10526</span> <span class="badge badge-secondary" >11042</span> <span class="badge badge-secondary" >10172</span> <span class="badge badge-secondary" >11193</span> <span class="badge badge-secondary" >10764</span> <span class="badge badge-secondary" >10558</span> <span class="badge badge-secondary" >10338</span> <span class="badge badge-secondary" >10680</span> <span class="badge badge-secondary" >10535</span> <span class="badge badge-secondary" >10233</span> <span class="badge badge-secondary" >10473</span> <span class="badge badge-secondary" >10727</span> <span class="badge badge-secondary" >10150</span> <span class="badge badge-secondary" >11151</span> <span class="badge badge-secondary" >10419</span> <span class="badge badge-secondary" >10579</span> <span class="badge badge-secondary" >10007</span> <span class="badge badge-secondary" >11148</span> <span class="badge badge-secondary" >10812</span> <span class="badge badge-secondary" >10199</span> <span class="badge badge-secondary" >10257</span> <span class="badge badge-secondary" >10282</span> <span class="badge badge-secondary" >10021</span> <span class="badge badge-secondary" >10194</span> <span class="badge badge-secondary" >10167</span> <span class="badge badge-secondary" >10999</span> <span class="badge badge-secondary" >10386</span> <span class="badge badge-secondary" >10660</span> <span class="badge badge-secondary" >11137</span> <span class="badge badge-secondary" >11154</span> <span class="badge badge-secondary" >10539</span> <span class="badge badge-secondary" >10430</span> <span class="badge badge-secondary" >10714</span> <span class="badge badge-secondary" >10354</span> <span class="badge badge-secondary" >10954</span> <span class="badge badge-secondary" >11102</span> <span class="badge badge-secondary" >11194</span> <span class="badge badge-secondary" >10878</span> <span class="badge badge-secondary" >10547</span> <span class="badge badge-secondary" >11212</span> <span class="badge badge-secondary" >11028</span> <span class="badge badge-secondary" >10937</span> <span class="badge badge-secondary" >10585</span> <span class="badge badge-secondary" >10214</span> <span class="badge badge-secondary" >10489</span> <span class="badge badge-secondary" >10794</span> <span class="badge badge-secondary" >10411</span> <span class="badge badge-secondary" >10759</span> <span class="badge badge-secondary" >10422</span> <span class="badge badge-secondary" >10754</span> <span class="badge badge-secondary" >10481</span> <span class="badge badge-secondary" >11179</span> <span class="badge badge-secondary" >10249</span> <span class="badge badge-secondary" >11053</span> <span class="badge badge-secondary" >11064</span> <span class="badge badge-secondary" >10716</span> <span class="badge badge-secondary" >10040</span> <span class="badge badge-secondary" >11049</span> <span class="badge badge-secondary" >10793</span> <span class="badge badge-secondary" >10070</span> <span class="badge badge-secondary" >10743</span> <span class="badge badge-secondary" >10536</span> <span class="badge badge-secondary" >11149</span> <span class="badge badge-secondary" >10594</span> <span class="badge badge-secondary" >11201</span> <span class="badge badge-secondary" >10261</span> <span class="badge badge-secondary" >10818</span> <span class="badge badge-secondary" >10377</span> <span class="badge badge-secondary" >10482</span> <span class="badge badge-secondary" >10037</span> <span class="badge badge-secondary" >10363</span> <span class="badge badge-secondary" >10298</span> <span class="badge badge-secondary" >10811</span> <span class="badge badge-secondary" >11227</span> <span class="badge badge-secondary" >11083</span> <span class="badge badge-secondary" >10949</span> <span class="badge badge-secondary" >10406</span> <span class="badge badge-secondary" >10801</span> <span class="badge badge-secondary" >11211</span> <span class="badge badge-secondary" >10521</span> <span class="badge badge-secondary" >10927</span> <span class="badge badge-secondary" >10739</span> <span class="badge badge-secondary" >10694</span> <span class="badge badge-secondary" >10006</span> <span class="badge badge-secondary" >10685</span> <span class="badge badge-secondary" >11163</span> <span class="badge badge-secondary" >10226</span> <span class="badge badge-secondary" >10186</span> <span class="badge badge-secondary" >10881</span> <span class="badge badge-secondary" >10026</span> <span class="badge badge-secondary" >11094</span> <span class="badge badge-secondary" >10971</span> <span class="badge badge-secondary" >11093</span> <span class="badge badge-secondary" >10945</span> <span class="badge badge-secondary" >10466</span> <span class="badge badge-secondary" >10436</span> <span class="badge badge-secondary" >11202</span> <span class="badge badge-secondary" >10275</span> <span class="badge badge-secondary" >10952</span> <span class="badge badge-secondary" >10931</span> <span class="badge badge-secondary" >10813</span> <span class="badge badge-secondary" >10103</span> <span class="badge badge-secondary" >10720</span> <span class="badge badge-secondary" >11196</span> <span class="badge badge-secondary" >11164</span> <span class="badge badge-secondary" >10929</span> <span class="badge badge-secondary" >10428</span> <span class="badge badge-secondary" >10453</span> <span class="badge badge-secondary" >10374</span> <span class="badge badge-secondary" >10239</span> <span class="badge badge-secondary" >11074</span> <span class="badge badge-secondary" >10095</span> <span class="badge badge-secondary" >10246</span> <span class="badge badge-secondary" >10758</span> <span class="badge badge-secondary" >10942</span> <span class="badge badge-secondary" >10387</span> <span class="badge badge-secondary" >11204</span> <span class="badge badge-secondary" >10865</span> <span class="badge badge-secondary" >11010</span> <span class="badge badge-secondary" >11095</span> <span class="badge badge-secondary" >10491</span> <span class="badge badge-secondary" >10650</span> <span class="badge badge-secondary" >11073</span> <span class="badge badge-secondary" >10104</span> <span class="badge badge-secondary" >11092</span> <span class="badge badge-secondary" >10034</span> <span class="badge badge-secondary" >10403</span> <span class="badge badge-secondary" >10596</span> <span class="badge badge-secondary" >10156</span> <span class="badge badge-secondary" >10220</span> <span class="badge badge-secondary" >10399</span> <span class="badge badge-secondary" >10966</span> <span class="badge badge-secondary" >10799</span> <span class="badge badge-secondary" >10042</span> <span class="badge badge-secondary" >10116</span> <span class="badge badge-secondary" >10935</span> <span class="badge badge-secondary" >10474</span> <span class="badge badge-secondary" >10014</span> <span class="badge badge-secondary" >10217</span> <span class="badge badge-secondary" >10603</span> <span class="badge badge-secondary" >10884</span> <span class="badge badge-secondary" >10798</span> <span class="badge badge-secondary" >10159</span> <span class="badge badge-secondary" >10009</span> <span class="badge badge-secondary" >10922</span> <span class="badge badge-secondary" >10001</span> <span class="badge badge-secondary" >10053</span> <span class="badge badge-secondary" >10869</span> <span class="badge badge-secondary" >11127</span> <span class="badge badge-secondary" >10732</span> <span class="badge badge-secondary" >10130</span> <span class="badge badge-secondary" >11178</span> <span class="badge badge-secondary" >10549</span> <span class="badge badge-secondary" >10331</span> <span class="badge badge-secondary" >10780</span> <span class="badge badge-secondary" >11222</span> <span class="badge badge-secondary" >10311</span> <span class="badge badge-secondary" >10089</span> <span class="badge badge-secondary" >10844</span> <span class="badge badge-secondary" >10731</span> <span class="badge badge-secondary" >10376</span> <span class="badge badge-secondary" >10425</span> <span class="badge badge-secondary" >10791</span> <span class="badge badge-secondary" >10886</span> <span class="badge badge-secondary" >10139</span> <span class="badge badge-secondary" >10904</span> <span class="badge badge-secondary" >10967</span> <span class="badge badge-secondary" >10735</span> <span class="badge badge-secondary" >10310</span> <span class="badge badge-secondary" >10197</span> <span class="badge badge-secondary" >10461</span> <span class="badge badge-secondary" >10285</span> <span class="badge badge-secondary" >10076</span> <span class="badge badge-secondary" >10800</span> <span class="badge badge-secondary" >10522</span> <span class="badge badge-secondary" >11144</span> <span class="badge badge-secondary" >10701</span> <span class="badge badge-secondary" >10610</span> <span class="badge badge-secondary" >10980</span> <span class="badge badge-secondary" >10113</span> <span class="badge badge-secondary" >11035</span> <span class="badge badge-secondary" >10899</span> <span class="badge badge-secondary" >10807</span> <span class="badge badge-secondary" >10109</span> <span class="badge badge-secondary" >10207</span> <span class="badge badge-secondary" >10133</span> <span class="badge badge-secondary" >10317</span> <span class="badge badge-secondary" >10414</span> <span class="badge badge-secondary" >10106</span> <span class="badge badge-secondary" >10641</span> <span class="badge badge-secondary" >10254</span> <span class="badge badge-secondary" >10272</span> <span class="badge badge-secondary" >10297</span> <span class="badge badge-secondary" >10250</span> <span class="badge badge-secondary" >10234</span> <span class="badge badge-secondary" >10856</span> <span class="badge badge-secondary" >10870</span> <span class="badge badge-secondary" >11121</span> <span class="badge badge-secondary" >10944</span> <span class="badge badge-secondary" >10080</span> <span class="badge badge-secondary" >10143</span> <span class="badge badge-secondary" >10198</span> <span class="badge badge-secondary" >10458</span> <span class="badge badge-secondary" >10740</span> <span class="badge badge-secondary" >10456</span> <span class="badge badge-secondary" >10654</span> <span class="badge badge-secondary" >10912</span> <span class="badge badge-secondary" >11008</span> <span class="badge badge-secondary" >10897</span> <span class="badge badge-secondary" >10379</span> <span class="badge badge-secondary" >10821</span> <span class="badge badge-secondary" >10826</span> <span class="badge badge-secondary" >11228</span> <span class="badge badge-secondary" >10145</span> <span class="badge badge-secondary" >10343</span> <span class="badge badge-secondary" >10121</span> <span class="badge badge-secondary" >11226</span> <span class="badge badge-secondary" >10135</span> <span class="badge badge-secondary" >11066</span> <span class="badge badge-secondary" >10653</span> <span class="badge badge-secondary" >10587</span> <span class="badge badge-secondary" >10313</span> <span class="badge badge-secondary" >11195</span> <span class="badge badge-secondary" >10208</span> <span class="badge badge-secondary" >10882</span> <span class="badge badge-secondary" >10750</span> <span class="badge badge-secondary" >10825</span> <span class="badge badge-secondary" >10420</span> <span class="badge badge-secondary" >10817</span> <span class="badge badge-secondary" >11084</span> <span class="badge badge-secondary" >10590</span> <span class="badge badge-secondary" >10229</span> <span class="badge badge-secondary" >10366</span> <span class="badge badge-secondary" >11231</span> <span class="badge badge-secondary" >10161</span> <span class="badge badge-secondary" >10011</span> <span class="badge badge-secondary" >10262</span> <span class="badge badge-secondary" >10365</span> <span class="badge badge-secondary" >11230</span> <span class="badge badge-secondary" >10212</span> <span class="badge badge-secondary" >11174</span> <span class="badge badge-secondary" >10025</span> <span class="badge badge-secondary" >10607</span> <span class="badge badge-secondary" >11198</span> <span class="badge badge-secondary" >10008</span> <span class="badge badge-secondary" >11223</span> <span class="badge badge-secondary" >10258</span> <span class="badge badge-secondary" >10316</span> <span class="badge badge-secondary" >11218</span> <span class="badge badge-secondary" >10372</span> <span class="badge badge-secondary" >10729</span> <span class="badge badge-secondary" >10765</span> <span class="badge badge-secondary" >10322</span> <span class="badge badge-secondary" >10969</span> <span class="badge badge-secondary" >10447</span> <span class="badge badge-secondary" >10890</span> <span class="badge badge-secondary" >10543</span> <span class="badge badge-secondary" >10227</span> <span class="badge badge-secondary" >10877</span> <span class="badge badge-secondary" >10333</span> <span class="badge badge-secondary" >10562</span> <span class="badge badge-secondary" >10048</span> <span class="badge badge-secondary" >10497</span> <span class="badge badge-secondary" >10364</span> <span class="badge badge-secondary" >10314</span> <span class="badge badge-secondary" >11200</span> <span class="badge badge-secondary" >10876</span> <span class="badge badge-secondary" >10995</span> <span class="badge badge-secondary" >10454</span> <span class="badge badge-secondary" >11021</span> <span class="badge badge-secondary" >11107</span> <span class="badge badge-secondary" >10611</span> <span class="badge badge-secondary" >11029</span> <span class="badge badge-secondary" >10065</span> <span class="badge badge-secondary" >10576</span> <span class="badge badge-secondary" >11098</span> <span class="badge badge-secondary" >10678</span> <span class="badge badge-secondary" >10669</span> <span class="badge badge-secondary" >10839</span> <span class="badge badge-secondary" >10519</span> <span class="badge badge-secondary" >10271</span> <span class="badge badge-secondary" >10848</span> <span class="badge badge-secondary" >10073</span> <span class="badge badge-secondary" >10508</span> <span class="badge badge-secondary" >10046</span> <span class="badge badge-secondary" >10613</span> <span class="badge badge-secondary" >10344</span> <span class="badge badge-secondary" >10909</span> <span class="badge badge-secondary" >10703</span> <span class="badge badge-secondary" >10664</span> <span class="badge badge-secondary" >10016</span> <span class="badge badge-secondary" >10656</span> <span class="badge badge-secondary" >10321</span> <span class="badge badge-secondary" >10398</span> <span class="badge badge-secondary" >10405</span> <span class="badge badge-secondary" >11159</span> <span class="badge badge-secondary" >10556</span> <span class="badge badge-secondary" >10003</span> <span class="badge badge-secondary" >10484</span> <span class="badge badge-secondary" >10098</span> <span class="badge badge-secondary" >10185</span> <span class="badge badge-secondary" >10475</span> <span class="badge badge-secondary" >10728</span> <span class="badge badge-secondary" >10975</span> <span class="badge badge-secondary" >11180</span> <span class="badge badge-secondary" >10487</span> <span class="badge badge-secondary" >11070</span> <span class="badge badge-secondary" >11177</span> <span class="badge badge-secondary" >11123</span> <span class="badge badge-secondary" >10274</span> <span class="badge badge-secondary" >10683</span> <span class="badge badge-secondary" >10819</span> <span class="badge badge-secondary" >11045</span> <span class="badge badge-secondary" >10077</span> <span class="badge badge-secondary" >10854</span> <span class="badge badge-secondary" >10408</span> <span class="badge badge-secondary" >11009</span> <span class="badge badge-secondary" >10397</span> <span class="badge badge-secondary" >10805</span> <span class="badge badge-secondary" >11215</span> <span class="badge badge-secondary" >11111</span> <span class="badge badge-secondary" >11210</span> <span class="badge badge-secondary" >10704</span> <span class="badge badge-secondary" >10837</span> <span class="badge badge-secondary" >10404</span> <span class="badge badge-secondary" >10571</span> <span class="badge badge-secondary" >11108</span> <span class="badge badge-secondary" >10580</span> <span class="badge badge-secondary" >10195</span> <span class="badge badge-secondary" >10325</span> <span class="badge badge-secondary" >11182</span> <span class="badge badge-secondary" >10327</span> <span class="badge badge-secondary" >11216</span> <span class="badge badge-secondary" >10429</span> <span class="badge badge-secondary" >10676</span> <span class="badge badge-secondary" >11157</span> <span class="badge badge-secondary" >10388</span> <span class="badge badge-secondary" >10631</span> <span class="badge badge-secondary" >10700</span> <span class="badge badge-secondary" >11023</span> <span class="badge badge-secondary" >11219</span> <span class="badge badge-secondary" >10360</span> <span class="badge badge-secondary" >11147</span> <span class="badge badge-secondary" >10776</span> <span class="badge badge-secondary" >11115</span> <span class="badge badge-secondary" >10349</span> <span class="badge badge-secondary" >10108</span> <span class="badge badge-secondary" >10485</span> <span class="badge badge-secondary" >10888</span> <span class="badge badge-secondary" >10151</span> <span class="badge badge-secondary" >11077</span> <span class="badge badge-secondary" >10695</span> <span class="badge badge-secondary" >10709</span> <span class="badge badge-secondary" >10761</span> <span class="badge badge-secondary" >10905</span> <span class="badge badge-secondary" >10609</span> <span class="badge badge-secondary" >10658</span> <span class="badge badge-secondary" >11054</span> <span class="badge badge-secondary" >10648</span> <span class="badge badge-secondary" >10724</span> <span class="badge badge-secondary" >11224</span> <span class="badge badge-secondary" >10490</span> <span class="badge badge-secondary" >10601</span> <span class="badge badge-secondary" >10569</span> <span class="badge badge-secondary" >10168</span> <span class="badge badge-secondary" >10440</span> <span class="badge badge-secondary" >11080</span> <span class="badge badge-secondary" >10448</span> <span class="badge badge-secondary" >10563</span> <span class="badge badge-secondary" >11086</span> <span class="badge badge-secondary" >10643</span> <span class="badge badge-secondary" >10591</span> <span class="badge badge-secondary" >10559</span> <span class="badge badge-secondary" >10902</span> <span class="badge badge-secondary" >11171</span> <span class="badge badge-secondary" >10339</span> <span class="badge badge-secondary" >10746</span> <span class="badge badge-secondary" >10455</span> <span class="badge badge-secondary" >10267</span> <span class="badge badge-secondary" >10326</span> <span class="badge badge-secondary" >10279</span> <span class="badge badge-secondary" >10941</span> <span class="badge badge-secondary" >10712</span> <span class="badge badge-secondary" >11190</span> <span class="badge badge-secondary" >11043</span> <span class="badge badge-secondary" >11181</span> <span class="badge badge-secondary" >11131</span> <span class="badge badge-secondary" >10874</span> <span class="badge badge-secondary" >10138</span> <span class="badge badge-secondary" >11134</span> <span class="badge badge-secondary" >10706</span> <span class="badge badge-secondary" >10033</span> <span class="badge badge-secondary" >10318</span> <span class="badge badge-secondary" >11015</span> <span class="badge badge-secondary" >10923</span> <span class="badge badge-secondary" >10155</span> <span class="badge badge-secondary" >10115</span> <span class="badge badge-secondary" >10067</span> <span class="badge badge-secondary" >10416</span> <span class="badge badge-secondary" >11039</span> <span class="badge badge-secondary" >10449</span> <span class="badge badge-secondary" >10306</span> <span class="badge badge-secondary" >11052</span> <span class="badge badge-secondary" >10263</span> <span class="badge badge-secondary" >11139</span> <span class="badge badge-secondary" >10480</span> <span class="badge badge-secondary" >10308</span> <span class="badge badge-secondary" >10956</span> <span class="badge badge-secondary" >10045</span> <span class="badge badge-secondary" >10069</span> <span class="badge badge-secondary" >10352</span> <span class="badge badge-secondary" >10340</span> <span class="badge badge-secondary" >10110</span> <span class="badge badge-secondary" >10913</span> <span class="badge badge-secondary" >10617</span> <span class="badge badge-secondary" >10986</span> <span class="badge badge-secondary" >10125</span> <span class="badge badge-secondary" >10768</span> <span class="badge badge-secondary" >10096</span> <span class="badge badge-secondary" >10781</span> <span class="badge badge-secondary" >10187</span> <span class="badge badge-secondary" >10442</span> <span class="badge badge-secondary" >11000</span> <span class="badge badge-secondary" >10677</span> <span class="badge badge-secondary" >10608</span> <span class="badge badge-secondary" >11109</span> <span class="badge badge-secondary" >10738</span> <span class="badge badge-secondary" >10231</span> <span class="badge badge-secondary" >10028</span> <span class="badge badge-secondary" >10615</span> <span class="badge badge-secondary" >10280</span> <span class="badge badge-secondary" >11020</span> <span class="badge badge-secondary" >10057</span> <span class="badge badge-secondary" >10647</span> <span class="badge badge-secondary" >10715</span> <span class="badge badge-secondary" >10883</span> <span class="badge badge-secondary" >10872</span> <span class="badge badge-secondary" >10915</span> <span class="badge badge-secondary" >10081</span> <span class="badge badge-secondary" >10598</span> <span class="badge badge-secondary" >10855</span> <span class="badge badge-secondary" >10171</span> <span class="badge badge-secondary" >10605</span> <span class="badge badge-secondary" >10270</span> <span class="badge badge-secondary" >10140</span> <span class="badge badge-secondary" >10599</span> <span class="badge badge-secondary" >10351</span> <span class="badge badge-secondary" >10919</span> <span class="badge badge-secondary" >10555</span> <span class="badge badge-secondary" >11189</span> <span class="badge badge-secondary" >10030</span> <span class="badge badge-secondary" >11105</span> <span class="badge badge-secondary" >10170</span> <span class="badge badge-secondary" >10148</span> <span class="badge badge-secondary" >10100</span> <span class="badge badge-secondary" >10920</span> <span class="badge badge-secondary" >11034</span> <span class="badge badge-secondary" >10431</span> <span class="badge badge-secondary" >11199</span> <span class="badge badge-secondary" >10955</span> <span class="badge badge-secondary" >10190</span> <span class="badge badge-secondary" >10500</span> <span class="badge badge-secondary" >10903</span> <span class="badge badge-secondary" >10013</span> <span class="badge badge-secondary" >11138</span> <span class="badge badge-secondary" >11128</span> <span class="badge badge-secondary" >10084</span> <span class="badge badge-secondary" >10193</span> <span class="badge badge-secondary" >10705</span> <span class="badge badge-secondary" >11026</span> <span class="badge badge-secondary" >10218</span> <span class="badge badge-secondary" >11172</span> <span class="badge badge-secondary" >11019</span> <span class="badge badge-secondary" >10612</span> <span class="badge badge-secondary" >11004</span> <span class="badge badge-secondary" >10583</span> <span class="badge badge-secondary" >10154</span> <span class="badge badge-secondary" >10528</span> <span class="badge badge-secondary" >10529</span> <span class="badge badge-secondary" >10433</span> <span class="badge badge-secondary" >10698</span> <span class="badge badge-secondary" >10452</span> <span class="badge badge-secondary" >10621</span> <span class="badge badge-secondary" >10047</span> <span class="badge badge-secondary" >10507</span> <span class="badge badge-secondary" >10335</span> <span class="badge badge-secondary" >10868</span> <span class="badge badge-secondary" >10015</span> <span class="badge badge-secondary" >10064</span> <span class="badge badge-secondary" >10627</span> <span class="badge badge-secondary" >10345</span> <span class="badge badge-secondary" >10415</span> <span class="badge badge-secondary" >10268</span> <span class="badge badge-secondary" >11055</span> <span class="badge badge-secondary" >10086</span> <span class="badge badge-secondary" >10370</span> <span class="badge badge-secondary" >10391</span> <span class="badge badge-secondary" >11031</span> <span class="badge badge-secondary" >10235</span> <span class="badge badge-secondary" >10997</span> <span class="badge badge-secondary" >11167</span> <span class="badge badge-secondary" >10174</span> <span class="badge badge-secondary" >10947</span> <span class="badge badge-secondary" >11018</span> <span class="badge badge-secondary" >11133</span> <span class="badge badge-secondary" >10087</span> <span class="badge badge-secondary" >10494</span> <span class="badge badge-secondary" >10149</span> <span class="badge badge-secondary" >10553</span> <span class="badge badge-secondary" >11112</span> <span class="badge badge-secondary" >10062</span> <span class="badge badge-secondary" >10892</span> <span class="badge badge-secondary" >10827</span> <span class="badge badge-secondary" >11150</span> <span class="badge badge-secondary" >10816</span> <span class="badge badge-secondary" >10165</span> <span class="badge badge-secondary" >10358</span> <span class="badge badge-secondary" >10552</span> <span class="badge badge-secondary" >10898</span> <span class="badge badge-secondary" >10646</span> <span class="badge badge-secondary" >11214</span> <span class="badge badge-secondary" >10324</span> <span class="badge badge-secondary" >10213</span> <span class="badge badge-secondary" >10588</span> <span class="badge badge-secondary" >10052</span> <span class="badge badge-secondary" >10177</span> <span class="badge badge-secondary" >11005</span> <span class="badge badge-secondary" >11097</span> <span class="badge badge-secondary" >11067</span> <span class="badge badge-secondary" >10286</span> <span class="badge badge-secondary" >10593</span> <span class="badge badge-secondary" >10670</span> <span class="badge badge-secondary" >10688</span> <span class="badge badge-secondary" >11056</span> <span class="badge badge-secondary" >10256</span> <span class="badge badge-secondary" >11030</span> <span class="badge badge-secondary" >10906</span> <span class="badge badge-secondary" >10253</span> <span class="badge badge-secondary" >10265</span> <span class="badge badge-secondary" >10299</span> <span class="badge badge-secondary" >10462</span> <span class="badge badge-secondary" >10985</span> <span class="badge badge-secondary" >10051</span> <span class="badge badge-secondary" >10934</span> <span class="badge badge-secondary" >10597</span> <span class="badge badge-secondary" >10530</span> <span class="badge badge-secondary" >11011</span> <span class="badge badge-secondary" >10961</span> <span class="badge badge-secondary" >10412</span> <span class="badge badge-secondary" >10757</span> <span class="badge badge-secondary" >10022</span> <span class="badge badge-secondary" >10863</span> <span class="badge badge-secondary" >11096</span> <span class="badge badge-secondary" >10380</span> <span class="badge badge-secondary" >10483</span> <span class="badge badge-secondary" >10867</span> <span class="badge badge-secondary" >10117</span> <span class="badge badge-secondary" >10675</span> <span class="badge badge-secondary" >10551</span> <span class="badge badge-secondary" >11106</span> <span class="badge badge-secondary" >10392</span> <span class="badge badge-secondary" >10657</span> <span class="badge badge-secondary" >10769</span> <span class="badge badge-secondary" >10723</span> <span class="badge badge-secondary" >10595</span> <span class="badge badge-secondary" >11184</span> <span class="badge badge-secondary" >11170</span> <span class="badge badge-secondary" >10383</span> <span class="badge badge-secondary" >10850</span> <span class="badge badge-secondary" >10438</span> <span class="badge badge-secondary" >10711</span> <span class="badge badge-secondary" >10124</span> <span class="badge badge-secondary" >10385</span> <span class="badge badge-secondary" >11024</span> <span class="badge badge-secondary" >11117</span> <span class="badge badge-secondary" >11072</span> <span class="badge badge-secondary" >10820</span> <span class="badge badge-secondary" >10665</span> <span class="badge badge-secondary" >10501</span> <span class="badge badge-secondary" >10273</span> <span class="badge badge-secondary" >10072</span> <span class="badge badge-secondary" >10020</span> <span class="badge badge-secondary" >11001</span> <span class="badge badge-secondary" >10889</span> <span class="badge badge-secondary" >10619</span> <span class="badge badge-secondary" >11003</span> <span class="badge badge-secondary" >10090</span> <span class="badge badge-secondary" >10445</span> <span class="badge badge-secondary" >10629</span> <span class="badge badge-secondary" >10822</span> <span class="badge badge-secondary" >10573</span> <span class="badge badge-secondary" >10439</span> <span class="badge badge-secondary" >10055</span> <span class="badge badge-secondary" >10767</span> <span class="badge badge-secondary" >10058</span> <span class="badge badge-secondary" >10173</span> <span class="badge badge-secondary" >10894</span> <span class="badge badge-secondary" >10498</span> <span class="badge badge-secondary" >11012</span> <span class="badge badge-secondary" >10625</span> <span class="badge badge-secondary" >10307</span> <span class="badge badge-secondary" >10178</span> <span class="badge badge-secondary" >10486</span> <span class="badge badge-secondary" >10936</span> <span class="badge badge-secondary" >10237</span> <span class="badge badge-secondary" >10795</span> <span class="badge badge-secondary" >10361</span> <span class="badge badge-secondary" >10843</span> <span class="badge badge-secondary" >10127</span> <span class="badge badge-secondary" >10424</span> <span class="badge badge-secondary" >10672</span> <span class="badge badge-secondary" >10829</span> <span class="badge badge-secondary" >11187</span> <span class="badge badge-secondary" >10771</span> <span class="badge badge-secondary" >10180</span> <span class="badge badge-secondary" >10970</span> <span class="badge badge-secondary" >10191</span> <span class="badge badge-secondary" >10751</span> <span class="badge badge-secondary" >11191</span> <span class="badge badge-secondary" >10668</span> <span class="badge badge-secondary" >10858</span> <span class="badge badge-secondary" >11207</span> <span class="badge badge-secondary" >11142</span> <span class="badge badge-secondary" >11120</span> <span class="badge badge-secondary" >10175</span> <span class="badge badge-secondary" >10464</span> <span class="badge badge-secondary" >10503</span> <span class="badge badge-secondary" >10778</span> <span class="badge badge-secondary" >11085</span> <span class="badge badge-secondary" >10578</span> <span class="badge badge-secondary" >10099</span> <span class="badge badge-secondary" >10402</span> <span class="badge badge-secondary" >10566</span> <span class="badge badge-secondary" >10702</span> <span class="badge badge-secondary" >10517</span> <span class="badge badge-secondary" >10255</span> <span class="badge badge-secondary" >10721</span> <span class="badge badge-secondary" >11208</span> <span class="badge badge-secondary" >10012</span> <span class="badge badge-secondary" >10434</span> <span class="badge badge-secondary" >10756</span> <span class="badge badge-secondary" >10152</span> <span class="badge badge-secondary" >10932</span> <span class="badge badge-secondary" >10240</span> <span class="badge badge-secondary" >10066</span> <span class="badge badge-secondary" >10163</span> <span class="badge badge-secondary" >10441</span> <span class="badge badge-secondary" >10384</span> <span class="badge badge-secondary" >10965</span> <span class="badge badge-secondary" >10784</span> <span class="badge badge-secondary" >10353</span> <span class="badge badge-secondary" >10477</span> <span class="badge badge-secondary" >10035</span> <span class="badge badge-secondary" >11176</span> <span class="badge badge-secondary" >10710</span> <span class="badge badge-secondary" >10435</span> <span class="badge badge-secondary" >10184</span> <span class="badge badge-secondary" >10749</span> <span class="badge badge-secondary" >10851</span> <span class="badge badge-secondary" >11173</span> <span class="badge badge-secondary" >10810</span> <span class="badge badge-secondary" >10504</span> <span class="badge badge-secondary" >11041</span> <span class="badge badge-secondary" >10252</span> <span class="badge badge-secondary" >10044</span> <span class="badge badge-secondary" >10134</span> <span class="badge badge-secondary" >10206</span> <span class="badge badge-secondary" >10785</span> <span class="badge badge-secondary" >10649</span> <span class="badge badge-secondary" >11089</span> <span class="badge badge-secondary" >10111</span> <span class="badge badge-secondary" >10264</span> <span class="badge badge-secondary" >10094</span> <span class="badge badge-secondary" >10515</span> <span class="badge badge-secondary" >11220</span> <span class="badge badge-secondary" >10722</span> <span class="badge badge-secondary" >10036</span> <span class="badge badge-secondary" >10962</span> <span class="badge badge-secondary" >10736</span> <span class="badge badge-secondary" >10815</span> <span class="badge badge-secondary" >10943</span> <span class="badge badge-secondary" >10157</span> <span class="badge badge-secondary" >10450</span> <span class="badge badge-secondary" >10400</span> <span class="badge badge-secondary" >10686</span> <span class="badge badge-secondary" >10796</span> <span class="badge badge-secondary" >10880</span> <span class="badge badge-secondary" >10834</span> <span class="badge badge-secondary" >10050</span> <span class="badge badge-secondary" >11059</span> <span class="badge badge-secondary" >11048</span> <span class="badge badge-secondary" >10049</span> <span class="badge badge-secondary" >10570</span> <span class="badge badge-secondary" >10797</span> <span class="badge badge-secondary" >11104</span> <span class="badge badge-secondary" >10960</span> <span class="badge badge-secondary" >10532</span> <span class="badge badge-secondary" >10083</span> <span class="badge badge-secondary" >10350</span> <span class="badge badge-secondary" >10463</span> <span class="badge badge-secondary" >10924</span> <span class="badge badge-secondary" >11090</span> <span class="badge badge-secondary" >11156</span> <span class="badge badge-secondary" >10238</span> <span class="badge badge-secondary" >10355</span> <span class="badge badge-secondary" >10853</span> <span class="badge badge-secondary" >10287</span> <span class="badge badge-secondary" >11006</span> <span class="badge badge-secondary" >10092</span> <span class="badge badge-secondary" >10635</span> <span class="badge badge-secondary" >10223</span> <span class="badge badge-secondary" >11203</span> <span class="badge badge-secondary" >10381</span> <span class="badge badge-secondary" >10544</span> <span class="badge badge-secondary" >10840</span> <span class="badge badge-secondary" >10916</span> <span class="badge badge-secondary" >10636</span> <span class="badge badge-secondary" >11017</span> <span class="badge badge-secondary" >10309</span> <span class="badge badge-secondary" >10661</span> <span class="badge badge-secondary" >10557</span> <span class="badge badge-secondary" >10940</span> <span class="badge badge-secondary" >10465</span> <span class="badge badge-secondary" >10554</span> <span class="badge badge-secondary" >10348</span> <span class="badge badge-secondary" >11185</span> <span class="badge badge-secondary" >10334</span> <span class="badge badge-secondary" >10496</span> <span class="badge badge-secondary" >10281</span> <span class="badge badge-secondary" >10060</span> <span class="badge badge-secondary" >10845</span> <span class="badge badge-secondary" >10684</span> <span class="badge badge-secondary" >11022</span> <span class="badge badge-secondary" >10779</span> <span class="badge badge-secondary" >10741</span> <span class="badge badge-secondary" >10357</span> <span class="badge badge-secondary" >10290</span> <span class="badge badge-secondary" >10488</span> <span class="badge badge-secondary" >11130</span> <span class="badge badge-secondary" >10926</span> <span class="badge badge-secondary" >10063</span> <span class="badge badge-secondary" >10910</span> <span class="badge badge-secondary" >10928</span> <span class="badge badge-secondary" >10777</span> <span class="badge badge-secondary" >11091</span> <span class="badge badge-secondary" >10572</span> <span class="badge badge-secondary" >10041</span> <span class="badge badge-secondary" >11081</span> <span class="badge badge-secondary" >10717</span> <span class="badge badge-secondary" >11082</span> <span class="badge badge-secondary" >10891</span> <span class="badge badge-secondary" >10031</span> <span class="badge badge-secondary" >10993</span> <span class="badge badge-secondary" >11192</span> <span class="badge badge-secondary" >10755</span> <span class="badge badge-secondary" >10760</span> <span class="badge badge-secondary" >10809</span> <span class="badge badge-secondary" >10407</span> <span class="badge badge-secondary" >10565</span> <span class="badge badge-secondary" >10373</span> <span class="badge badge-secondary" >10994</span> <span class="badge badge-secondary" >11136</span> <span class="badge badge-secondary" >10189</span> <span class="badge badge-secondary" >10849</span> <span class="badge badge-secondary" >10315</span> <span class="badge badge-secondary" >10567</span> <span class="badge badge-secondary" >10866</span> <span class="badge badge-secondary" >10730</span> <span class="badge badge-secondary" >10471</span> <span class="badge badge-secondary" >10470</span> <span class="badge badge-secondary" >11143</span> <span class="badge badge-secondary" >10996</span> <span class="badge badge-secondary" >10833</span> <span class="badge badge-secondary" >11188</span> <span class="badge badge-secondary" >11119</span> <span class="badge badge-secondary" >10835</span> <span class="badge badge-secondary" >10112</span> <span class="badge badge-secondary" >10527</span> <span class="badge badge-secondary" >10693</span> <span class="badge badge-secondary" >10245</span> <span class="badge badge-secondary" >10209</span> <span class="badge badge-secondary" >10792</span> <span class="badge badge-secondary" >10427</span> <span class="badge badge-secondary" >10968</span> <span class="badge badge-secondary" >10004</span> <span class="badge badge-secondary" >10718</span> <span class="badge badge-secondary" >10136</span> <span class="badge badge-secondary" >10531</span> <span class="badge badge-secondary" >10105</span> <span class="badge badge-secondary" >10277</span> <span class="badge badge-secondary" >10472</span> <span class="badge badge-secondary" >10930</span> <span class="badge badge-secondary" >11146</span> <span class="badge badge-secondary" >10367</span> <span class="badge badge-secondary" >10247</span> <span class="badge badge-secondary" >10141</span> <span class="badge badge-secondary" >10328</span> <span class="badge badge-secondary" >11087</span> <span class="badge badge-secondary" >10219</span> <span class="badge badge-secondary" >10224</span> <span class="badge badge-secondary" >10803</span> <span class="badge badge-secondary" >10119</span> <span class="badge badge-secondary" >10887</span> <span class="badge badge-secondary" >11002</span> <span class="badge badge-secondary" >10618</span> <span class="badge badge-secondary" >10831</span> <span class="badge badge-secondary" >10679</span> <span class="badge badge-secondary" >10602</span> <span class="badge badge-secondary" >11152</span> <span class="badge badge-secondary" >10160</span> <span class="badge badge-secondary" >10337</span> <span class="badge badge-secondary" >10369</span> <span class="badge badge-secondary" >10652</span> <span class="badge badge-secondary" >10396</span> <span class="badge badge-secondary" >10763</span> <span class="badge badge-secondary" >10295</span> <span class="badge badge-secondary" >10561</span> <span class="badge badge-secondary" >10568</span> <span class="badge badge-secondary" >10259</span> <span class="badge badge-secondary" >10946</span> <span class="badge badge-secondary" >10976</span> <span class="badge badge-secondary" >10232</span> <span class="badge badge-secondary" >10564</span> <span class="badge badge-secondary" >10437</span> <span class="badge badge-secondary" >11016</span> <span class="badge badge-secondary" >10511</span> <span class="badge badge-secondary" >10201</span> <span class="badge badge-secondary" >10871</span> <span class="badge badge-secondary" >11071</span> <span class="badge badge-secondary" >10196</span> <span class="badge badge-secondary" >10203</span> <span class="badge badge-secondary" >10633</span> <span class="badge badge-secondary" >10074</span> <span class="badge badge-secondary" >10296</span> <span class="badge badge-secondary" >10460</span> <span class="badge badge-secondary" >11116</span> <span class="badge badge-secondary" >10068</span> <span class="badge badge-secondary" >10107</span> <span class="badge badge-secondary" >10983</span> <span class="badge badge-secondary" >11183</span> <span class="badge badge-secondary" >11044</span> <span class="badge badge-secondary" >10879</span> <span class="badge badge-secondary" >10689</span> <span class="badge badge-secondary" >11175</span> <span class="badge badge-secondary" >10911</span> <span class="badge badge-secondary" >10748</span> <span class="badge badge-secondary" >10371</span> <span class="badge badge-secondary" >10516</span> <span class="badge badge-secondary" >10747</span> <span class="badge badge-secondary" >10457</span> <span class="badge badge-secondary" >10753</span> <span class="badge badge-secondary" >10802</span> <span class="badge badge-secondary" >10690</span> <span class="badge badge-secondary" >10734</span> <span class="badge badge-secondary" >10782</span> <span class="badge badge-secondary" >11110</span> <span class="badge badge-secondary" >10418</span> <span class="badge badge-secondary" >10589</span> <span class="badge badge-secondary" >11221</span> <span class="badge badge-secondary" >10828</span> <span class="badge badge-secondary" >10378</span> <span class="badge badge-secondary" >10346</span> <span class="badge badge-secondary" >10783</span> <span class="badge badge-secondary" >10862</span> <span class="badge badge-secondary" >11160</span> <span class="badge badge-secondary" >10984</span> <span class="badge badge-secondary" >11132</span> <span class="badge badge-secondary" >10293</span> <span class="badge badge-secondary" >10632</span> <span class="badge badge-secondary" >10039</span> <span class="badge badge-secondary" >10766</span> <span class="badge badge-secondary" >11063</span> <span class="badge badge-secondary" >10043</span> <span class="badge badge-secondary" >10075</span> <span class="badge badge-secondary" >10347</span> <span class="badge badge-secondary" >10300</span> <span class="badge badge-secondary" >10707</span> <span class="badge badge-secondary" >10029</span> <span class="badge badge-secondary" >10907</span> <span class="badge badge-secondary" >11079</span> <span class="badge badge-secondary" >10181</span> <span class="badge badge-secondary" >10236</span> <span class="badge badge-secondary" >11161</span> <span class="badge badge-secondary" >10478</span> <span class="badge badge-secondary" >10176</span> <span class="badge badge-secondary" >10523</span> <span class="badge badge-secondary" >10097</span> <span class="badge badge-secondary" >10541</span> <span class="badge badge-secondary" >10506</span> <span class="badge badge-secondary" >10832</span> <span class="badge badge-secondary" >10981</span> <span class="badge badge-secondary" >10492</span> <span class="badge badge-secondary" >10634</span> <span class="badge badge-secondary" >10673</span> <span class="badge badge-secondary" >10762</span> <span class="badge badge-secondary" >10320</span> <span class="badge badge-secondary" >10687</span> <span class="badge badge-secondary" >11233</span> <span class="badge badge-secondary" >10645</span> <span class="badge badge-secondary" >10278</span> <span class="badge badge-secondary" >11088</span> <span class="badge badge-secondary" >10806</span> <span class="badge badge-secondary" >11099</span> <span class="badge badge-secondary" >10789</span> <span class="badge badge-secondary" >11169</span> <span class="badge badge-secondary" >10204</span> <span class="badge badge-secondary" >10459</span> <span class="badge badge-secondary" >10132</span> <span class="badge badge-secondary" >10875</span> <span class="badge badge-secondary" >11065</span> <span class="badge badge-secondary" >10342</span> <span class="badge badge-secondary" >10908</span> <span class="badge badge-secondary" >11229</span> <span class="badge badge-secondary" >11103</span> <span class="badge badge-secondary" >10674</span> <span class="badge badge-secondary" >10421</span> <span class="badge badge-secondary" >11058</span> <span class="badge badge-secondary" >10808</span> <span class="badge badge-secondary" >10082</span> <span class="badge badge-secondary" >10410</span> <span class="badge badge-secondary" >10305</span> <span class="badge badge-secondary" >10586</span> <span class="badge badge-secondary" >11232</span> <span class="badge badge-secondary" >10302</span> <span class="badge badge-secondary" >10964</span> <span class="badge badge-secondary" >10288</span> <span class="badge badge-secondary" >10977</span> <span class="badge badge-secondary" >10581</span> <span class="badge badge-secondary" >10606</span> <span class="badge badge-secondary" >11062</span> <span class="badge badge-secondary" >10426</span> <span class="badge badge-secondary" >10933</span> <span class="badge badge-secondary" >10502</span> <span class="badge badge-secondary" >10624</span> <span class="badge badge-secondary" >10019</span> <span class="badge badge-secondary" >11213</span> <span class="badge badge-secondary" >10118</span> <span class="badge badge-secondary" >10860</span> <span class="badge badge-secondary" >11155</span> <span class="badge badge-secondary" >10775</span> <span class="badge badge-secondary" >11061</span> <span class="badge badge-secondary" >10266</span> <span class="badge badge-secondary" >10691</span> <span class="badge badge-secondary" >10054</span> <span class="badge badge-secondary" >10225</span> <span class="badge badge-secondary" >10699</span> <span class="badge badge-secondary" >11197</span> <span class="badge badge-secondary" >10533</span> <span class="badge badge-secondary" >10744</span> <span class="badge badge-secondary" >10294</span> <span class="badge badge-secondary" >10248</span> <span class="badge badge-secondary" >11032</span> <span class="badge badge-secondary" >10895</span> <span class="badge badge-secondary" >10642</span> <span class="badge badge-secondary" >10550</span> <span class="badge badge-secondary" >10056</span> <span class="badge badge-secondary" >10982</span> <span class="badge badge-secondary" >10524</span> <span class="badge badge-secondary" >10032</span> <span class="badge badge-secondary" >10469</span> <span class="badge badge-secondary" >11129</span> <span class="badge badge-secondary" >10394</span> <span class="badge badge-secondary" >10978</span> <span class="badge badge-secondary" >11217</span> <span class="badge badge-secondary" >10205</span> <span class="badge badge-secondary" >11057</span> <span class="badge badge-secondary" >10038</span> <span class="badge badge-secondary" >10071</span> <span class="badge badge-secondary" >10137</span> <span class="badge badge-secondary" >10468</span> <span class="badge badge-secondary" >11206</span> <span class="badge badge-secondary" >10671</span> <span class="badge badge-secondary" >10202</span> <span class="badge badge-secondary" >11205</span> <span class="badge badge-secondary" >10713</span> <span class="badge badge-secondary" >10838</span> <span class="badge badge-secondary" >10417</span> <span class="badge badge-secondary" >10951</span> <span class="badge badge-secondary" >10221</span> <span class="badge badge-secondary" >10885</span> <span class="badge badge-secondary" >10291</span> <span class="badge badge-secondary" >11140</span> <span class="badge badge-secondary" >11125</span> <span class="badge badge-secondary" >10901</span> <span class="badge badge-secondary" >11153</span> <span class="badge badge-secondary" >10950</span> <span class="badge badge-secondary" >10697</span> <span class="badge badge-secondary" >10914</span> <span class="badge badge-secondary" >10079</span> <span class="badge badge-secondary" >10467</span> <span class="badge badge-secondary" >10241</span> <span class="badge badge-secondary" >10200</span> <span class="badge badge-secondary" >11100</span> <span class="badge badge-secondary" >10061</span> <span class="badge badge-secondary" >10169</span> <span class="badge badge-secondary" >10972</span> <span class="badge badge-secondary" >11033</span> <span class="badge badge-secondary" >10662</span> <span class="badge badge-secondary" >10027</span> <span class="badge badge-secondary" >10804</span> <span class="badge badge-secondary" >10304</span> <span class="badge badge-secondary" >10330</span> <span class="badge badge-secondary" >10341</span> <span class="badge badge-secondary" >10963</span> <span class="badge badge-secondary" >11135</span> <span class="badge badge-secondary" >10128</span> <span class="badge badge-secondary" >10017</span> <span class="badge badge-secondary" >10600</span> <span class="badge badge-secondary" >10726</span> <span class="badge badge-secondary" >10215</span> <span class="badge badge-secondary" >10959</span> <span class="badge badge-secondary" >10925</span> <span class="badge badge-secondary" >10548</span> <span class="badge badge-secondary" >10696</span> <span class="badge badge-secondary" >10493</span> <span class="badge badge-secondary" >10289</span> <span class="badge badge-secondary" >10638</span> <span class="badge badge-secondary" >10393</span> <span class="badge badge-secondary" >10192</span> <span class="badge badge-secondary" >10329</span> <span class="badge badge-secondary" >10210</span> <span class="badge badge-secondary" >10375</span> <span class="badge badge-secondary" >10772</span> <span class="badge badge-secondary" >11126</span> <span class="badge badge-secondary" >10243</span> <span class="badge badge-secondary" >10382</span> <span class="badge badge-secondary" >10939</span> <span class="badge badge-secondary" >10545</span> <span class="badge badge-secondary" >10147</span> <span class="badge badge-secondary" >10164</span> <span class="badge badge-secondary" >11036</span> <span class="badge badge-secondary" >10824</span> <span class="badge badge-secondary" >11186</span> <span class="badge badge-secondary" >10708</span> <span class="badge badge-secondary" >11114</span> <span class="badge badge-secondary" >10823</span> <span class="badge badge-secondary" >10446</span> <span class="badge badge-secondary" >11040</span> <span class="badge badge-secondary" >10957</span> <span class="badge badge-secondary" >10292</span> <span class="badge badge-secondary" >10918</span> <span class="badge badge-secondary" >11113</span> <span class="badge badge-secondary" >10301</span> <span class="badge badge-secondary" >10921</span> <span class="badge badge-secondary" >10078</span> <span class="badge badge-secondary" >10228</span> <span class="badge badge-secondary" >10857</span> <span class="badge badge-secondary" >10864</span> <span class="badge badge-secondary" >10537</span> <span class="badge badge-secondary" >10628</span> <span class="badge badge-secondary" >10623</span> <span class="badge badge-secondary" >10847</span> <span class="badge badge-secondary" >10182</span> <span class="badge badge-secondary" >10144</span> <span class="badge badge-secondary" >10725</span> <span class="badge badge-secondary" >11118</span> <span class="badge badge-secondary" >11075</span> <span class="badge badge-secondary" >10059</span> <span class="badge badge-secondary" >10153</span> <span class="badge badge-secondary" >11165</span> <span class="badge badge-secondary" >10836</span> <span class="badge badge-secondary" >10211</span> <span class="badge badge-secondary" >10512</span> <span class="badge badge-secondary" >10637</span> <span class="badge badge-secondary" >10188</span> <span class="badge badge-secondary" >11162</span> <span class="badge badge-secondary" >11027</span> <span class="badge badge-secondary" >10101</span> <span class="badge badge-secondary" >10514</span> <span class="badge badge-secondary" >10640</span> <span class="badge badge-secondary" >10319</span> <span class="badge badge-secondary" >10639</span> <span class="badge badge-secondary" >10540</span> <span class="badge badge-secondary" >10542</span> <span class="badge badge-secondary" >10737</span> <span class="badge badge-secondary" >10644</span> <span class="badge badge-secondary" >10852</span> <span class="badge badge-secondary" >10859</span> <span class="badge badge-secondary" >10114</span> <span class="badge badge-secondary" >11122</span> <span class="badge badge-secondary" >10846</span> <span class="badge badge-secondary" >10131</span> <span class="badge badge-secondary" >10018</span> <span class="badge badge-secondary" >10476</span> <span class="badge badge-secondary" >10499</span> <span class="badge badge-secondary" >10120</span> <span class="badge badge-secondary" >10546</span> <span class="badge badge-secondary" >10538</span> <span class="badge badge-secondary" >10992</span> <span class="badge badge-secondary" >10368</span> <span class="badge badge-secondary" >10742</span> <span class="badge badge-secondary" >10244</span> <span class="badge badge-secondary" >10158</span> <span class="badge badge-secondary" >11124</span> <span class="badge badge-secondary" >10005</span> <span class="badge badge-secondary" >10667</span> <span class="badge badge-secondary" >10787</span> <span class="badge badge-secondary" >10162</span> <span class="badge badge-secondary" >10444</span> <span class="badge badge-secondary" >11068</span> <span class="badge badge-secondary" >10560</span> <span class="badge badge-secondary" >10604</span> <span class="badge badge-secondary" >10953</span> <span class="badge badge-secondary" >10525</span> <span class="badge badge-secondary" >10659</span> <span class="badge badge-secondary" >10251</span> <span class="badge badge-secondary" >10283</span> <span class="badge badge-secondary" >10692</span> <span class="badge badge-secondary" >10332</span> <span class="badge badge-secondary" >10745</span> <span class="badge badge-secondary" >10222</span> <span class="badge badge-secondary" >10592</span> <span class="badge badge-secondary" >10991</span> <span class="badge badge-secondary" >10312</span> <span class="badge badge-secondary" >11069</span> <span class="badge badge-secondary" >10770</span> <span class="badge badge-secondary" >10577</span> <span class="badge badge-secondary" >11050</span> <span class="badge badge-secondary" >10091</span> <span class="badge badge-secondary" >10520</span> <span class="badge badge-secondary" >10423</span> <span class="badge badge-secondary" >10681</span> <span class="badge badge-secondary" >10900</span> <span class="badge badge-secondary" >10102</span> <span class="badge badge-secondary" >10510</span> <span class="badge badge-secondary" >10303</span> <span class="badge badge-secondary" >10126</span> <span class="badge badge-secondary" >10002</span> <span class="badge badge-secondary" >11078</span> <span class="badge badge-secondary" >10336</span> <span class="badge badge-secondary" >10973</span> <span class="badge badge-secondary" >10432</span> <span class="badge badge-secondary" >11168</span> <span class="badge badge-secondary" >11037</span> <span class="badge badge-secondary" >11007</span> <span class="badge badge-secondary" >10276</span> <span class="badge badge-secondary" >10409</span> <span class="badge badge-secondary" >10323</span> <span class="badge badge-secondary" >11225</span> <span class="badge badge-secondary" >10505</span>.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+    </div>
+</div>
+        
+          <div id="section-4" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-4-content-block-1" class="col-12" >
+
+    <div id="section-4-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    order_date
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-4-content-block-2" class="col-12" >
+
+    
+
+<ul id="section-4-content-block-2-body" >
+    
+            
+        
+        <li >
+                <span >
+                    values must match this regular expression: <span class="badge badge-secondary" >\d{4}-\d{2}-\d{2}</span>.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+    </div>
+</div>
+        
+          <div id="section-5" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-5-content-block-1" class="col-12" >
+
+    <div id="section-5-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    order_date_dt
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-5-content-block-2" class="col-12" >
+
+    
+
+<ul id="section-5-content-block-2-body" >
+    
+            
+        
+        <li >
+                <span >
+                    values must be less than or equal to <span class="badge badge-secondary" >2026-11-25 11:12:26.859372</span>.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+    </div>
+</div>
+        
+          <div id="section-6" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-6-content-block-1" class="col-12" >
+
+    <div id="section-6-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    order_id
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-6-content-block-2" class="col-12" >
+
+    
+
+<ul id="section-6-content-block-2-body" >
+    
+            
+        
+        <li >
+                <span >
+                    values must never be null.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+            
+        
+        <li >
+                <span >
+                    values must be unique.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+    </div>
+</div>
+        
+          <div id="section-7" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-7-content-block-1" class="col-12" >
+
+    <div id="section-7-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    shipping_country
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-7-content-block-2" class="col-12" >
+
+    
+
+<ul id="section-7-content-block-2-body" >
+    
+            
+        
+        <li >
+                <span >
+                    values must belong to this set: <span class="badge badge-secondary" >FR</span> <span class="badge badge-secondary" >DE</span> <span class="badge badge-secondary" >ES</span> <span class="badge badge-secondary" >BE</span>.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+    </div>
+</div>
+        
+          <div id="section-8" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-8-content-block-1" class="col-12" >
+
+    <div id="section-8-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    status
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-8-content-block-2" class="col-12" >
+
+    
+
+<ul id="section-8-content-block-2-body" >
+    
+            
+        
+        <li >
+                <span >
+                    values must belong to this set: <span class="badge badge-secondary" >pending</span> <span class="badge badge-secondary" >shipped</span> <span class="badge badge-secondary" >delivered</span> <span class="badge badge-secondary" >cancelled</span> <span class="badge badge-secondary" >returned</span>.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+    </div>
+</div>
+        
+          <div id="section-9" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+        
+
+<div id="section-9-content-block-1" class="col-12" >
+
+    <div id="section-9-content-block-1-header" class="alert alert-secondary" >
+        <div>
+          
+                <h5 class="m-0" >
+                    total_amount_eur
+                </h5>
+            
+        </div>
+      
+    </div>
+
+</div>
+        
+
+<div id="section-9-content-block-2" class="col-12" >
+
+    
+
+<ul id="section-9-content-block-2-body" >
+    
+            
+        
+        <li >
+                <span >
+                    values must be greater than <span class="badge badge-secondary" >0.0</span> and less than or equal to <span class="badge badge-secondary" >10000.0</span>.
+                </span>
+            </li>
+    
+            
+        
+        <li style="list-style-type:none;" >
+                <hr class="mt-1 mb-1" >
+                    
+                </hr>
+            </li>
+    
+</ul>
+
+</div>
+        
+    </div>
+</div>
+        
+        </div>
+      </div>
+    </div>
+    
+<footer>
+  <p>Stay current on everything GX with our newsletter <a href="https://greatexpectations.io/newsletter?utm_source=datadocs&utm_medium=product&utm_campaign=newsletter&utm_content=form">Subscribe</a></p>
+</footer>
+  </body>
+</html>
