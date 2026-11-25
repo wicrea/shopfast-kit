@@ -1,0 +1,9 @@
+.venv
+.gitnore
+data
+cm2
+init 
+check_setup.py
+docker_compose.yml
+README.md
+requirementd.txt
