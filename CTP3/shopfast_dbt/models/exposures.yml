@@ -1,0 +1,41 @@
+version: 2
+
+# Exposures = the things OUTSIDE dbt that use our models (dashboards, reports, ML models).
+# They appear at the end of the lineage graph: impact analysis starts here.
+exposures:
+  - name: sales_dashboard
+    label: Sales dashboard (Metabase)
+    type: dashboard
+    maturity: high
+    owner:
+      name: Sara Martin
+      email: sara.martin@shopfast.example
+    depends_on:
+      - ref('fct_orders')
+    description: "Daily revenue, orders and conversion per channel. Opened every morning by the CEO."
+
+  # TODO (Exercise 2): add the Finance monthly revenue report (depends on fct_orders)
+  # -> fait : exposure ci-dessous
+  - name: finance_monthly_revenue
+    label: Finance monthly revenue report
+    type: dashboard
+    maturity: high
+    owner:
+      name: Sara Martin
+      email: sara.martin@shopfast.example
+    depends_on:
+      - ref('fct_orders')
+    description: "Monthly revenue (gross, refunded, net) reported to Finance. Used for the monthly close and the board pack."
+
+  # TODO (Exercise 2): add the churn-prediction ML model (depends on dim_customers)
+  # -> fait : exposure ci-dessous
+  - name: churn_prediction_model
+    label: Churn prediction (ML)
+    type: ml
+    maturity: low
+    owner:
+      name: Karim Benali
+      email: karim.benali@shopfast.example
+    depends_on:
+      - ref('dim_customers')
+    description: "Supervised model scoring each customer's probability of churning in the next 90 days. Retrained monthly; feeds the win-back campaign."

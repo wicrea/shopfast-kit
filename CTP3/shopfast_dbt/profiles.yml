@@ -1,0 +1,8 @@
+# Local DuckDB database file - no server needed, uses very little RAM.
+shopfast:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: shopfast.duckdb
+      threads: 2

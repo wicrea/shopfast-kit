@@ -1,0 +1,156 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "One row per customer account, cleaned from raw.customers (exact duplicate rows removed, ISO country codes, ISO dates)."
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      steward: "Karim Benali (Analytics Engineer)"
+      domain: customer
+      tier: gold
+    config:
+      tags: ['pii']
+    columns:
+      - name: customer_id
+        description: "Technical identifier of the customer account. One person may have several accounts (see duplicates)."
+        data_tests: [unique, not_null]
+      - name: email
+        description: "Login email, trimmed and lower-cased."
+        tags: ['pii']
+        meta: {classification: confidential}
+      # TODO: document first_name, last_name, phone, birth_date, city, country_code, signup_date,
+      #       has_marketing_consent, loyalty_tier  (description + pii tag/classification where needed)
+      - name: first_name
+        description: "Customer's given name as provided at signup."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: last_name
+        description: "Customer's family name as provided at signup."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: phone
+        description: "Contact phone number, normalized to E.164 where possible. Used for delivery and account recovery."
+        tags: ['pii']
+        meta: {classification: restricted}
+      - name: birth_date
+        description: "Date of birth (ISO date). Used for age verification and marketing eligibility."
+        tags: ['pii']
+        meta: {classification: restricted}
+      - name: city
+        description: "City of the customer's billing address."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: country_code
+        description: "ISO 3166-1 alpha-2 country code of the billing address."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['FR', 'DE', 'ES', 'BE']
+      - name: signup_date
+        description: "Date the account was created (ISO date)."
+      - name: has_marketing_consent
+        description: "Boolean: true if the customer opted in to marketing communications (GDPR consent)."
+      - name: loyalty_tier
+        description: "Loyalty programme tier of the account (none, silver, gold, platinum)."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['none', 'silver', 'gold', 'platinum']
+      # TODO: add a test: accepted_values on country_code (FR, DE, ES, BE) and on loyalty_tier
+
+  - name: stg_orders
+    description: "One row per customer order, with its date, sales channel, shipping country and total amount in euros."
+    # TODO: meta owner / steward / domain / tier
+    config:
+      tags: ['pii']
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      steward: "Karim Benali (Analytics Engineer)"
+      domain: order
+      tier: gold
+    columns:
+      - name: order_id
+        description: "Technical identifier of the order. Unique across all orders."
+        data_tests: [unique, not_null]
+      # TODO: document customer_id, order_date, status, channel, shipping_country, total_amount_eur
+      - name: customer_id
+        description: "Identifier of the customer account that placed the order. Joins to stg_customers.customer_id."
+        data_tests: [not_null]
+      - name: order_date
+        description: "Date the order was placed (ISO date)."
+        data_tests: [not_null]
+      - name: status
+        description: "Current lifecycle status of the order (pending, paid, shipped, delivered, cancelled, refunded)."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['pending', 'paid', 'shipped', 'delivered', 'cancelled', 'refunded']
+      - name: channel
+        description: "Sales channel through which the order was placed (web, mobile app, store, phone)."
+      - name: shipping_country
+        description: "ISO 3166-1 alpha-2 country code of the delivery address."
+      - name: total_amount_eur
+        description: "Order total in euros (EUR), including tax and shipping, expressed as a decimal amount (not cents)."
+      # TODO: test accepted_values on status
+
+  - name: stg_order_items
+    description: "One row per product line of an order, with quantity and unit price."
+    # Ajout meta.owner manquant (gouvernance)
+    config:
+      tags: ['pii']
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      steward: "Karim Benali (Analytics Engineer)"
+      domain: order
+      tier: gold
+    columns:
+      - name: order_id
+        description: "Identifier of the parent order. Joins to stg_orders.order_id."
+        data_tests: [not_null]
+      - name: product_id
+        description: "Identifier of the ordered product. Joins to stg_products.product_id."
+        data_tests: [not_null]
+
+  - name: stg_payments
+    description: "One row per payment event from the payment provider (captured or refunded)."
+    # TODO: what is the UNIT of amount? Document it - this is the cents incident!
+    # -> amount documenté ci-dessous en CENTS entiers
+    # Ajout meta.owner manquant (gouvernance)
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      steward: "Karim Benali (Analytics Engineer)"
+      domain: payment
+      tier: gold
+    columns:
+      - name: payment_id
+        description: "Technical identifier of the payment event."
+        data_tests: [unique, not_null]
+      - name: order_id
+        description: "Identifier of the order the payment belongs to. Joins to stg_orders.order_id."
+        data_tests: [not_null]
+      - name: amount
+        description: "Payment amount expressed in CENTS (integer minor units), not euros. Divide by 100 to obtain EUR."
+        data_tests: [not_null]
+      - name: currency
+        description: "ISO 4217 currency code of the payment (e.g. EUR)."
+      - name: status
+        description: "Payment event status as reported by the provider (captured, refunded, failed)."
+
+  - name: stg_products
+    description: "Product catalogue with list prices."
+    # Ajout meta.owner manquant (gouvernance)
+    config:
+      tags: ['pii']
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      steward: "Karim Benali (Analytics Engineer)"
+      domain: product
+      tier: gold
+    columns:
+      - name: product_id
+        description: "Technical identifier of the product. Unique in the catalogue."
+        data_tests: [unique, not_null]
+      - name: product_name
+        description: "Human-readable product name shown to customers."
+      - name: list_price_eur
+        description: "Current catalogue list price in euros (decimal amount, not cents)."

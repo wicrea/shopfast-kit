@@ -1,0 +1,50 @@
+model,column,description,pii,classification,model_owner,domain,tier
+stg_payments,payment_id,Technical identifier of the payment event.,False,,Sara Martin (Head of Sales),payment,gold
+stg_payments,order_id,Identifier of the order the payment belongs to. Joins to stg_orders.order_id.,False,,Sara Martin (Head of Sales),payment,gold
+stg_payments,amount,"Payment amount expressed in CENTS (integer minor units), not euros. Divide by 100 to obtain EUR.",False,,Sara Martin (Head of Sales),payment,gold
+stg_payments,currency,ISO 4217 currency code of the payment (e.g. EUR).,False,,Sara Martin (Head of Sales),payment,gold
+stg_payments,status,"Payment event status as reported by the provider (captured, refunded, failed).",False,,Sara Martin (Head of Sales),payment,gold
+stg_orders,order_id,Technical identifier of the order. Unique across all orders.,False,,Sara Martin (Head of Sales),order,gold
+stg_orders,customer_id,Identifier of the customer account that placed the order. Joins to stg_customers.customer_id.,False,,Sara Martin (Head of Sales),order,gold
+stg_orders,order_date,Date the order was placed (ISO date).,False,,Sara Martin (Head of Sales),order,gold
+stg_orders,status,"Current lifecycle status of the order (pending, paid, shipped, delivered, cancelled, refunded).",False,,Sara Martin (Head of Sales),order,gold
+stg_orders,channel,"Sales channel through which the order was placed (web, mobile app, store, phone).",False,,Sara Martin (Head of Sales),order,gold
+stg_orders,shipping_country,ISO 3166-1 alpha-2 country code of the delivery address.,False,,Sara Martin (Head of Sales),order,gold
+stg_orders,total_amount_eur,"Order total in euros (EUR), including tax and shipping, expressed as a decimal amount (not cents).",False,,Sara Martin (Head of Sales),order,gold
+stg_products,product_id,Technical identifier of the product. Unique in the catalogue.,False,,Sara Martin (Head of Sales),product,gold
+stg_products,product_name,Human-readable product name shown to customers.,False,,Sara Martin (Head of Sales),product,gold
+stg_products,list_price_eur,"Current catalogue list price in euros (decimal amount, not cents).",False,,Sara Martin (Head of Sales),product,gold
+stg_customers,customer_id,Technical identifier of the customer account. One person may have several accounts (see duplicates).,False,,Sara Martin (Head of Sales),customer,gold
+stg_customers,email,"Login email, trimmed and lower-cased.",True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,first_name,Customer's given name as provided at signup.,True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,last_name,Customer's family name as provided at signup.,True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,phone,"Contact phone number, normalized to E.164 where possible. Used for delivery and account recovery.",True,restricted,Sara Martin (Head of Sales),customer,gold
+stg_customers,birth_date,Date of birth (ISO date). Used for age verification and marketing eligibility.,True,restricted,Sara Martin (Head of Sales),customer,gold
+stg_customers,city,City of the customer's billing address.,True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,country_code,ISO 3166-1 alpha-2 country code of the billing address.,False,,Sara Martin (Head of Sales),customer,gold
+stg_customers,signup_date,Date the account was created (ISO date).,False,,Sara Martin (Head of Sales),customer,gold
+stg_customers,has_marketing_consent,Boolean: true if the customer opted in to marketing communications (GDPR consent).,False,,Sara Martin (Head of Sales),customer,gold
+stg_customers,loyalty_tier,"Loyalty programme tier of the account (none, silver, gold, platinum).",False,,Sara Martin (Head of Sales),customer,gold
+stg_order_items,order_id,Identifier of the parent order. Joins to stg_orders.order_id.,False,,Sara Martin (Head of Sales),order,gold
+stg_order_items,product_id,Identifier of the ordered product. Joins to stg_products.product_id.,False,,Sara Martin (Head of Sales),order,gold
+dim_customers,customer_id,Technical identifier of the customer account. One person may have several accounts.,False,,Sara Martin (Head of Sales),customer,gold
+dim_customers,email,"Login email, trimmed and lower-cased.",True,confidential,Sara Martin (Head of Sales),customer,gold
+dim_customers,first_name,Customer's given name as provided at signup.,True,confidential,Sara Martin (Head of Sales),customer,gold
+dim_customers,last_name,Customer's family name as provided at signup.,True,confidential,Sara Martin (Head of Sales),customer,gold
+dim_customers,phone,"Contact phone number, normalized to E.164 where possible. Used for delivery and account recovery.",True,restricted,Sara Martin (Head of Sales),customer,gold
+dim_customers,birth_date,Date of birth (ISO date). Used for age verification and marketing eligibility.,True,restricted,Sara Martin (Head of Sales),customer,gold
+dim_customers,city,City of the customer's billing address.,True,confidential,Sara Martin (Head of Sales),customer,gold
+dim_customers,country_code,ISO 3166-1 alpha-2 country code of the billing address.,False,,Sara Martin (Head of Sales),customer,gold
+dim_customers,signup_date,Date the account was created (ISO date).,False,,Sara Martin (Head of Sales),customer,gold
+dim_customers,has_marketing_consent,Boolean: true if the customer opted in to marketing communications (GDPR consent).,False,,Sara Martin (Head of Sales),customer,gold
+dim_customers,loyalty_tier,"Loyalty programme tier of the account (none, silver, gold, platinum).",False,,Sara Martin (Head of Sales),customer,gold
+fct_orders,order_id,Technical identifier of the order. Unique across all orders.,False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,customer_id,Identifier of the customer account that placed the order. Joins to dim_customers.customer_id.,False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,order_date,Date the order was placed (ISO date).,False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,status,"Current lifecycle status of the order (pending, paid, shipped, delivered, cancelled, refunded).",False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,channel,"Sales channel through which the order was placed (web, mobile app, store, phone).",False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,gross_revenue_eur,"**Gross revenue (EUR)** — total amount paid by the customer for an order, VAT included, shipping included, before refunds.
+Owner: Head of Sales · Steward: Karim Benali · Status: approved (2026-11-10)",False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,refunded_amount_eur,"Total amount refunded on the order in euros (EUR), as a decimal amount (not cents). Zero if no refund.",False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,net_revenue_eur,"**Net revenue (EUR)** — gross revenue minus refunded amounts, for the order. Excludes cancelled orders. This is the revenue figure used by the Finance report. Expressed as a decimal amount (not cents).
+Owner: Head of Sales · Steward: Karim Benali · Status: approved (2026-11-10)",False,,Sara Martin (Head of Sales),sales,gold

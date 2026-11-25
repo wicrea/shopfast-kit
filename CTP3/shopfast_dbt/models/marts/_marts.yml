@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "{{ doc('order') }} One row per order with gross, refunded and net revenue. Source of the Sales dashboard and the Finance report."
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      domain: sales
+      tier: gold
+    columns:
+      - name: order_id
+        description: "Technical identifier of the order. Unique across all orders."
+        data_tests: [unique, not_null]
+      # TODO: document the other columns -> fait ci-dessous
+      - name: customer_id
+        description: "Identifier of the customer account that placed the order. Joins to dim_customers.customer_id."
+        data_tests: [not_null]
+      - name: order_date
+        description: "Date the order was placed (ISO date)."
+        data_tests: [not_null]
+      - name: status
+        description: "Current lifecycle status of the order (pending, paid, shipped, delivered, cancelled, refunded)."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['pending', 'paid', 'shipped', 'delivered', 'cancelled', 'refunded']
+      - name: channel
+        description: "Sales channel through which the order was placed (web, mobile app, store, phone)."
+      - name: gross_revenue_eur
+        description: "{{ doc('gross_revenue') }}"
+        meta:
+          glossary: gross_revenue
+      - name: refunded_amount_eur
+        description: "Total amount refunded on the order in euros (EUR), as a decimal amount (not cents). Zero if no refund."
+      - name: net_revenue_eur
+        # TODO (Exercise 3): replace with the glossary term net_revenue using the doc() function
+        # -> fait : doc block + meta.glossary
+        description: "{{ doc('net_revenue') }}"
+        meta:
+          glossary: net_revenue
+
+  - name: dim_customers
+    # TODO: meta owner / steward / domain / tier, column docs, PII tags
+    # -> tout fait ci-dessous
+    description: "{{ doc('customer') }} One row per customer account, with identity, contact details, consent and loyalty information. Source of customer-level reporting and segmentation."
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      steward: "Karim Benali (Analytics Engineer)"
+      domain: customer
+      tier: gold
+    columns:
+      - name: customer_id
+        description: "Technical identifier of the customer account. One person may have several accounts."
+        data_tests: [unique, not_null]
+      - name: email
+        description: "Login email, trimmed and lower-cased."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: first_name
+        description: "Customer's given name as provided at signup."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: last_name
+        description: "Customer's family name as provided at signup."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: phone
+        description: "Contact phone number, normalized to E.164 where possible. Used for delivery and account recovery."
+        tags: ['pii']
+        meta: {classification: restricted}
+      - name: birth_date
+        description: "Date of birth (ISO date). Used for age verification and marketing eligibility."
+        tags: ['pii']
+        meta: {classification: restricted}
+      - name: city
+        description: "City of the customer's billing address."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: country_code
+        description: "ISO 3166-1 alpha-2 country code of the billing address."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['FR', 'DE', 'ES', 'BE']
+      - name: signup_date
+        description: "Date the account was created (ISO date)."
+      - name: has_marketing_consent
+        description: "Boolean: true if the customer opted in to marketing communications (GDPR consent)."
+      - name: loyalty_tier
+        description: "Loyalty programme tier of the account (none, silver, gold, platinum)."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['none', 'silver', 'gold', 'platinum']

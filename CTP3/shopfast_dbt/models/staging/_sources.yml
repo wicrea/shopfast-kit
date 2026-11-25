@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: shopfast_raw
+    description: "Raw CSV files delivered by ShopFast's operational systems (landing zone, all columns as text)."
+    meta:
+      external_location: "read_csv('../../data/{name}.csv', header=true, all_varchar=true)"
+    tables:
+      - name: customers
+      - name: products
+      - name: orders
+      - name: order_items
+      - name: payments

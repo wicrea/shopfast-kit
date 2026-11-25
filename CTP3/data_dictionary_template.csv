@@ -1,0 +1,16 @@
+table,column,business_meaning,data_type,unit_or_format,allowed_values_or_range,nullable_Y_N,example_value,personal_data_Y_N,classification,owner,source_system
+stg_orders,order_id,Technical identifier of the order,VARCHAR,ISO-like string,Unique non-null,N,ORD-2026-000123,N,,Sara Martin,shopfast_orders
+stg_orders,customer_id,Identifier of the customer account that placed the order,VARCHAR,ISO-like string,Joins dim_customers.customer_id,N,CUST-00042,N,,Sara Martin,shopfast_orders
+stg_orders,order_date,Date the order was placed,DATE,ISO 8601 (YYYY-MM-DD),>= 2020-01-01,N,2026-11-10,N,,Sara Martin,shopfast_orders
+stg_orders,status,Current lifecycle status of the order,VARCHAR,enum,pending|paid|shipped|delivered|cancelled|refunded,N,paid,N,,Sara Martin,shopfast_orders
+stg_orders,channel,Sales channel through which the order was placed,VARCHAR,enum,web|mobile_app|store|phone,N,web,N,,Sara Martin,shopfast_orders
+stg_orders,shipping_country,ISO country code of the delivery address,VARCHAR,ISO 3166-1 alpha-2,FR|DE|ES|BE,Y,FR,N,,Sara Martin,shopfast_orders
+stg_orders,total_amount_eur,Order total in euros (incl. tax and shipping),DECIMAL(10,2),EUR decimal (not cents),>= 0,N,149.90,N,,Sara Martin,shopfast_orders
+stg_payments,payment_id,Technical identifier of the payment event,VARCHAR,ISO-like string,Unique non-null,N,PAY-2026-000456,N,,Sara Martin,payment_provider
+stg_payments,order_id,Identifier of the order the payment belongs to,VARCHAR,ISO-like string,Joins stg_orders.order_id,N,ORD-2026-000123,N,,Sara Martin,payment_provider
+stg_payments,payment_date,Date the payment event occurred,DATE,ISO 8601 (YYYY-MM-DD),>= 2020-01-01,N,2026-11-10,N,,Sara Martin,payment_provider
+stg_payments,method,Payment method used,VARCHAR,enum,card|paypal|bank_transfer|apple_pay|google_pay,N,card,N,,Sara Martin,payment_provider
+stg_payments,amount,Payment amount expressed in CENTS (integer minor units),INTEGER,cents (divide by 100 for EUR),>= 0,N,14990,N,,Sara Martin,payment_provider
+stg_payments,currency,ISO currency code of the payment,VARCHAR,ISO 4217,EUR|USD|GBP,N,EUR,N,,Sara Martin,payment_provider
+stg_payments,card_last4,Last 4 digits of the payment card,VARCHAR,4 digits,^[0-9]{4}$,Y,4242,Y,confidential,Sara Martin,payment_provider
+stg_payments,payment_status,Status of the payment event as reported by the provider,VARCHAR,enum,captured|refunded|failed|pending,N,captured,N,,Sara Martin,payment_provider

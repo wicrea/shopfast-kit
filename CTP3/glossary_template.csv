@@ -1,0 +1,6 @@
+term,definition_one_sentence,formula_or_rule,example,owner_who_decides,steward_who_maintains,related_columns,status_draft_approved,decision_date,notes_conflicts
+active customer,,,,,,dim_customers.last_order_date,draft,,
+net revenue,,,,,,fct_orders.net_revenue_eur,draft,,
+churned customer,,,,,,,draft,,
+customer,,,,,,,draft,,
+order,,,,,,,draft,,

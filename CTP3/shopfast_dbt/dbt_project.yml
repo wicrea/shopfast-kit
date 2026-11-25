@@ -1,0 +1,15 @@
+name: shopfast
+version: "1.0.0"
+config-version: 2
+profile: shopfast
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  shopfast:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
